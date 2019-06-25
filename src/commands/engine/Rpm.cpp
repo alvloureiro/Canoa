@@ -1,8 +1,8 @@
 #include "Rpm.h"
 
-#include <QString>
+#include <string>
 
 Rpm::Rpm() : Command() {
-    m_commandName = QString("RPM Command");
-    m_commandPID = QString("01 0C");
+    m_commandName = std::string("RPM Command");
+    m_commandPID = std::string("01 0C");
 }

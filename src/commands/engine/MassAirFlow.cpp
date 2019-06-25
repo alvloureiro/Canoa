@@ -1,8 +1,8 @@
 #include "MassAirFlow.h"
 
-#include <QString>
+#include <string>
 
 MassAirFlow::MassAirFlow() : Command() {
-    m_commandName = QString("MAF Command");
-    m_commandPID = QString("01 10");
+    m_commandName = std::string("MAF Command");
+    m_commandPID = std::string("01 10");
 }

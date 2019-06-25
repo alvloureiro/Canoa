@@ -1,8 +1,8 @@
 #include "Speed.h"
 
-#include <QString>
+#include <string>
 
 Speed::Speed() : Command() {
-    m_commandName = QString("Speed Command");
-    m_commandPID = QString("01 0D");
+    m_commandName = std::string("Speed Command");
+    m_commandPID = std::string("01 0D");
 }

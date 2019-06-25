@@ -1,8 +1,8 @@
 #include "ThrottlePosition.h"
 
-#include <QString>
+#include <string>
 
 ThrottlePosition::ThrottlePosition() : Command() {
-    m_commandName = QString("Throttle Position command");
-    m_commandPID = QString("01 11");
+    m_commandName = std::string("Throttle Position command");
+    m_commandPID = std::string("01 11");
 }

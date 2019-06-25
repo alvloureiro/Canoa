@@ -2,9 +2,7 @@
 #ifndef CANOA_COMMAND_H
 #define CANOA_COMMAND_H
 
-#include <QDebug>
-#include <QMetaType>
-#include <QString>
+#include <string>
 
 class Command {
 
@@ -12,21 +10,18 @@ public:
     explicit Command();
     virtual ~Command() = default;
 
-    inline QString commandName() const { return  m_commandName; }
-    inline QString commandPID() const { return m_commandPID; }
+    inline std::string commandName() const { return  m_commandName; }
+    inline std::string commandPID() const { return m_commandPID; }
 
-    inline QString rawValue() const { return m_value; };
-    inline void setRawValue(const QString& value) { m_value = value; }
+    inline std::string rawValue() const { return m_value; };
+    inline void setRawValue(const std::string& value) { m_value = value; }
 
 protected:
-    QString m_commandName;
-    QString m_commandPID;
-    QString m_value;
+    std::string m_commandName;
+    std::string m_commandPID;
+    std::string m_value;
 };
 
-Q_DECLARE_METATYPE(Command)
-
-QDebug operator<<(QDebug dbg, const Command &c);
-
+std::ostream& operator<<(std::ostream&, const Command&);
 
 #endif //CANOA_COMMAND_H

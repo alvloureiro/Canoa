@@ -1,8 +1,8 @@
 #include "OilTemperature.h"
 
-#include <QString>
+#include <string>
 
 OilTemperature::OilTemperature() :Command() {
-    m_commandName = QString("Oil Temperature");
-    m_commandPID = QString("01 5C");
+    m_commandName = std::string("Oil Temperature");
+    m_commandPID = std::string("01 5C");
 }

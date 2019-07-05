@@ -41,6 +41,9 @@ cmake-build-*/
 build/
 output/
 
+# Ignore third-party libraries
+third-party/
+
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 

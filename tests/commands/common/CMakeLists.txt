@@ -1,0 +1,14 @@
+if ("${CANOA_TEST_NAME_EXECUTABLE}" STREQUAL "")
+    set(CANOA_TEST_NAME_EXECUTABLE "canoaTests")
+endif ()
+
+file(GLOB CANOA_COMMON_COMMANDS_TESTS "*.cpp")
+
+add_executable(${CANOA_TEST_NAME_EXECUTABLE} ${CANOA_COMMON_COMMANDS_TESTS})
+
+target_link_libraries(${CANOA_TEST_NAME_EXECUTABLE}
+                      ${PROJECT_NAME}
+                      gtest
+                      gmock
+                      gtest_main
+                      pthread)

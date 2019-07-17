@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(LIBRARY_NAME)
 
 set(CANOA_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set(CANOA_SRC_ROOT_DIR "${CANOA_ROOT_DIR}/src")
+set(CANOA_COMMANDS_ROOT_DIR "${CANOA_SRC_ROOT_DIR}/commands")
 set(CANOA_THIRD_PARTY_DIR "${CANOA_ROOT_DIR}/third-party")
 
 list(APPEND CMAKE_MODULE_PATH "${CANOA_ROOT_DIR}/CMake")
@@ -21,13 +23,8 @@ if (BUILD_CANOA_EXAMPLE)
     add_subdirectory(example)
 endif ()
 
-if (BUILD_TESTING)
-    message(STATUS "Add tests and gtest to build system")
-    set(CANOA_GTEST_DOWNLOAD_DIR "${CANOA_THIRD_PARTY_DIR}/googletest")
-
-    include("${CANOA_ROOT_DIR}/CMake/GoogleTest.cmake")
-
-    #add_subdirectory(tests)
+if (BUILD_TESTING AND ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    add_subdirectory(tests)
 endif ()
 
 add_subdirectory(src)

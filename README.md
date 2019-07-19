@@ -50,3 +50,34 @@ Canoa
     └── lib
         └── libCanoa.so
 ```
+
+## Git Strategy
+#### Commit messages
+All the commit messages should use the imperative mood in description, first you should use a single line commit
+if necessary you can explain the commit's motivation always using the `what` and `why`.
+
+##### Message structure
+The commit message consists of the three distinct parts separated by a blank line: the title,
+an optional body and the author's signature. It looks like below:
+```
+    [TagName]: Short description
+
+    Body of explanation, explaning the motivation use the rule `what` and `why`,
+    not the how.
+
+    <Author-Signature>
+```
+
+The TagName should follow the pattern listed below:
+
+```
+[Buildsystem]: Used to build config files like cmake, configure, autotools
+[Infra]: Used to designate update configs, no production code change
+[Feat]: Used to designate a new Feature
+[Fix]: A bug fix
+[Refactor]: User to designate a production code refactoring
+[Tests]: Add tests, refactoring tests, no production code changes
+```
+
+## Finally
+Enjoy the project!

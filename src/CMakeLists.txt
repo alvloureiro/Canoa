@@ -2,6 +2,12 @@ include(GNUInstallDirs)
 
 set(LIBRARY_TARGET_NAME "${PROJECT_NAME}")
 
+set(THREADS_HAVE_PTHREAD_ARG 1)
+find_package(Threads REQUIRED)
+
+find_package(PkgConfig)
+pkg_check_modules(SERIAL libserial)
+
 set(CANOA_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CANOA_COMMANDS_DIR "${CANOA_SRC_DIR}/commands")
 
@@ -12,7 +18,8 @@ set(CANOA_ENGINE_COMMANDS_DIR "${CANOA_COMMANDS_DIR}/engine")
 include_directories(
         "${CANOA_FACTORY_DIR}"
         "${CANOA_COMMON_COMMANDS_DIR}"
-        "${CANOA_ENGINE_COMMANDS_DIR}")
+        "${CANOA_ENGINE_COMMANDS_DIR}"
+        "${SERIAL_INCLUDE_DIRS}")
 
 file(GLOB CANOA_FACTORY_HEADERS "${CANOA_FACTORY_DIR}/*.h")
 file(GLOB CANOA_FACTORY_SRCS "${CANOA_FACTORY_DIR}/*.cpp")
@@ -44,6 +51,8 @@ set(SRCS
         ${CANOA_ENGINE_COMMANDS_SRCS})
 
 add_library(${LIBRARY_TARGET_NAME} SHARED ${SRCS})
+target_link_directories(${LIBRARY_TARGET_NAME} PUBLIC ${LIBSERIAL_LIB_DIR})
+target_link_libraries(${LIBRARY_TARGET_NAME} ${SERIAL_LDFLAGS} ${CMAKE_THREAD_LIBS_INIT})
 
 install(TARGETS ${LIBRARY_TARGET_NAME}
         LIBRARY DESTINATION  ${PROJECT_DESTINATION_LIB_DIR})

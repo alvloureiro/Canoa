@@ -8,6 +8,7 @@ add_executable(${CANOA_TEST_NAME_EXECUTABLE} ${CANOA_COMMON_COMMANDS_TESTS})
 
 target_link_libraries(${CANOA_TEST_NAME_EXECUTABLE}
                       ${PROJECT_NAME}
+                      serial
                       gtest
                       gmock
                       gtest_main

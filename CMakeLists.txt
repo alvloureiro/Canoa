@@ -8,6 +8,11 @@ option(BUILD_CANOA_EXAMPLE "Include the example directory to build system" OFF)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
+    message(STATUS "Always build in debug mode")
+    set(CMAKE_BUILD_TYPE "Debug")
+endif ()
+
 set(LIBRARY_NAME)
 
 set(CANOA_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
@@ -15,8 +20,11 @@ set(CANOA_SRC_ROOT_DIR "${CANOA_ROOT_DIR}/src")
 set(CANOA_COMMANDS_ROOT_DIR "${CANOA_SRC_ROOT_DIR}/commands")
 set(CANOA_THIRD_PARTY_DIR "${CANOA_ROOT_DIR}/third-party")
 
+set(LIBSERIAL_ROOT_DIR "${CANOA_THIRD_PARTY_DIR}/libserial")
+set(LIBSERIAL_INCLUDE_DIR "${LIBSERIAL_ROOT_DIR}/include")
+set(LIBSERIAL_LIB_DIR "${LIBSERIAL_ROOT_DIR}/lib")
+
 list(APPEND CMAKE_MODULE_PATH "${CANOA_ROOT_DIR}/CMake")
-message(STATUS "Current CMake module path: ${CMAKE_MODULE_PATH}")
 
 if (BUILD_CANOA_EXAMPLE)
     message(WARNING "Add the example application to build system")

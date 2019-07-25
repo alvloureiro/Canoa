@@ -12,11 +12,12 @@ public:
     SerialPortManager(SerialPortManager const&) = delete;
     SerialPortManager&operator=(SerialPortManager const&) = delete;
 
-    ~SerialPortManager() = default;
+    ~SerialPortManager();
 
     static std::unique_ptr<LibSerial::SerialPort> instance();
 
 private:
+    std::unique_ptr<LibSerial::SerialPort> serialPort_;
     static inline std::string const serialPort_1_ = "/dev/ttyUSB0";
     static inline std::string const serialPort_2_ = "/dev/ttyUSB1";
 

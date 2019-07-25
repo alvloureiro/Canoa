@@ -7,12 +7,12 @@
 template<typename T>
 class CommandFactory {
 public:
-    CommandFactory(const CommandFactory&) = delete;
-    CommandFactory&operator=(const CommandFactory) = delete;
+    CommandFactory(CommandFactory const&) = delete;
+    CommandFactory&operator=(CommandFactory const&) = delete;
 
     ~CommandFactory() = default;
 
-    static std::unique_ptr<T> make();
+    static std::unique_ptr<T> makeCommand();
 
 private:
     CommandFactory() = default;
